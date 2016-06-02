@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- Apple Discount with extended date -->
+	<bean name="applesDiscount"
+		  class="com.luchoct.basket.service.discount.SingleTemporaryItemDiscount">
+		<property name="item" ref="apple" />
+		<property name="percentage" value="10" />
+		<property name="description"
+				  value="Apples have a 10% discount off their normal price this week" />
+		<property name="ticketDescription" value="Apples 10% off" />
+		<property name="initDate">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2010-01-01" />
+			</bean>
+		</property>
+		<property name="endDate">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2032-01-01" />
+			</bean>
+		</property>
+	</bean>
+
+</beans>

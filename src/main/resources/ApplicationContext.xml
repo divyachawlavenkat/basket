@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean name="dateFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="yyyy-MM-dd" />
+	</bean>
+
+	<!-- ITEMS -->
+	<bean name="soup" class="com.luchoct.basket.dto.CatalogItem">
+		<property name="id" value="Soup" />
+		<property name="description" value="Tin of Soup" />
+		<property name="ticketDescription" value="Tin of Soup" />
+		<property name="price" value="0.65" />
+	</bean>
+
+	<bean name="bread" class="com.luchoct.basket.dto.CatalogItem">
+		<property name="id" value="Bread" />
+		<property name="description" value="Loaf of Bread" />
+		<property name="ticketDescription" value="Loaf of Bread" />
+		<property name="price" value="0.80" />
+	</bean>
+
+	<bean name="milk" class="com.luchoct.basket.dto.CatalogItem">
+		<property name="id" value="Milk" />
+		<property name="description" value="Bottle of Milk" />
+		<property name="ticketDescription" value="Bottle of Milk" />
+		<property name="price" value="1.30" />
+	</bean>
+
+	<bean name="apple" class="com.luchoct.basket.dto.CatalogItem">
+		<property name="id" value="Apple" />
+		<property name="description" value="Bag of Apple" />
+		<property name="ticketDescription" value="Bag of Apple" />
+		<property name="price" value="1.00" />
+	</bean>
+
+	<bean name="catalog" class="com.luchoct.basket.dto.Catalog">
+		<property name="availableItems">
+			<map>
+				<entry key="Soup" value-ref="soup" />
+				<entry key="Bread" value-ref="bread" />
+				<entry key="Milk" value-ref="milk" />
+				<entry key="Apple" value-ref="apple" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- SHOPPING SERVICE -->
+	<bean name="service" class="com.luchoct.basket.service.ShoppingService">
+		<!-- The property catalog is injected in the tests. -->
+		<property name="catalog" ref="catalog"/>
+		<property name="discounts">
+			<set>
+				<ref bean="applesDiscount" />
+				<ref bean="breadDiscountOnBuyingSoup" />
+			</set>
+		</property>
+	</bean>
+
+	<!-- DISCOUNTS -->
+	<bean name="applesDiscount"
+		  class="com.luchoct.basket.service.discount.SingleTemporaryItemDiscount">
+		<property name="item" ref="apple" />
+		<property name="percentage" value="10" />
+		<property name="description"
+				  value="Apples have a 10% discount off their normal price this week" />
+		<property name="ticketDescription" value="Apples 10% off" />
+		<property name="initDate">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2010-01-01" />
+			</bean>
+		</property>
+		<property name="endDate">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2012-01-01" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean name="breadDiscountOnBuyingSoup"
+		  class="com.luchoct.basket.service.discount.AnotherItemDiscount">
+		<property name="itemRequired" ref="soup" />
+		<property name="numItemsRequired" value="2" />
+		<property name="itemDiscounted" ref="bread" />
+		<property name="percentage" value="50" />
+		<property name="description"
+				  value="Buy 2 tins of soup and get a loaf of bread for half price" />
+		<property name="ticketDescription" value="Bread 50% off bcs of Soup" />
+	</bean>
+
+</beans>

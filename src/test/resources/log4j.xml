@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%p [%t] %c{1}.%M(%L) | %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="target/surefire-reports/logBasket.log" />
+		<param name="MaxFileSize" value="5MB" />
+		<param name="MaxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{dd/MM/yy hh:mm:ss:sss z}] %5p %c{2}: %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Suppress invalid warning messages from JSF -->
+	<logger name="org.springframework">
+		<level value="DEBUG" />
+	</logger>
+
+	<logger name="com.luchoct.basket">
+		<level value="INFO" />
+	</logger>
+
+	<root>
+		<level value="ERROR" />
+		<appender-ref ref="CONSOLE"/>
+		<!--appender-ref ref="FILE"/-->
+	</root>
+
+</log4j:configuration>
