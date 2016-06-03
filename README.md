@@ -50,8 +50,15 @@ Available ids are: Soup, Bread, Milk, Apple
 #Technical Specification
 This is a maven project
 
+#Changelog
+* 2013-12-10 Version 1.0 Initial Release
+* 2014-12-10 Version 1.1
+  * Upgraded to Spring 4 from Spring 3.
+  * Upgraded to Java 8 from Java 6
+
+
 #Areas of improvement
 * Use slf4j rather than log4j
-* Replace ShoppingServiceTest by actual unit tests using Mockito.
+* Replace tests on ShoppingServiceTest by actual unit tests using Mockito.
 
 
