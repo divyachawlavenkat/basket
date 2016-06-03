@@ -48,7 +48,7 @@ Available ids are: Soup, Bread, Milk, Apple
 ```
 
 #Technical Specification
-This is a maven project
+This is a maven project (tested with Maven 3.0.5).
 
 #Changelog
 * 2013-12-10 Version 1.0 Initial Release
