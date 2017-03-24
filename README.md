@@ -1,5 +1,5 @@
-#Basket
-##Functional Specification: Pricing a basket
+# Basket
+## Functional Specification: Pricing a basket
 Write a program and associated unit tests that can price a basket of goods taking into account some special offers.
 
 The goods that can be purchased, together with their normal prices are:
@@ -39,7 +39,7 @@ The code and design should meet these requirements, but be sufficiently flexible
 
 The code should be well structured, commented, have error handling and be tested.
 
-#Run
+# Run
 run `java -jar PriceBasket.jar --help` or `java -jar PriceBasket.jar PriceBasket` to get more information.
 ```
 Usage PriceBasket lis_of_ids
@@ -47,17 +47,17 @@ list_of_ids is a list of ids of items of the catalog, separated by spaces.
 Available ids are: Soup, Bread, Milk, Apple
 ```
 
-#Technical Specification
+# Technical Specification
 This is a maven project (tested with Maven 3.0.5).
 
-#Changelog
+# Changelog
 * 2013-12-10 Version 1.0 Initial Release
 * 2014-12-10 Version 1.1
   * Upgraded to Spring 4 from Spring 3.
   * Upgraded to Java 8 from Java 6
 
 
-#Areas of improvement
+# Areas of improvement
 * Use slf4j rather than log4j
 * Replace tests on ShoppingServiceTest by actual unit tests using Mockito.
 
