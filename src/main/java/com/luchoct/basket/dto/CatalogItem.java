@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.luchoct.basket.dto;
+package com.divyavenkat.basket.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * An item from the catalog.
- * @author Luis
+ * @author DivyaVenkat
  * 
  */
 @Data
