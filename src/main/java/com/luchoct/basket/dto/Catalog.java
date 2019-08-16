@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.luchoct.basket.dto;
+package com.divyavenkat.basket.dto;
 
 import lombok.Data;
 
@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * The information about the available items, and the sort of containers and
  * prices availables for each item.
- * @author Luis
+ * @author DivyaVenkat
  * 
  */
 @Data
